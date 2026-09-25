@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecureJoin — Next-Gen Private Real-Time Chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       HOME / LANDING VIEW
+       ====================================================================== -->
+  <div class="home-container">
+    <div class="brand-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      Secure & Ephemeral
+    </div>
+
+    <div class="hero-section">
+      <h1>SecureJoin</h1>
+      <p class="tagline">Ultra-fast, private room-based messaging with zero footprint.</p>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="features-container">
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <h3>Private Rooms</h3>
+        <p>Ephemeral channels created on-the-fly with custom room codes.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <h3>Real-time Speed</h3>
+        <p>Instant socket-driven communication, file sharing, and live status.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </div>
+        <h3>Zero Logging</h3>
+        <p>Messages vanish when the room closes. No permanent database trails.</p>
+      </div>
+    </div>
+
+    <!-- Setup / Auth Box -->
+    <div class="auth-container">
+      <div class="auth-box">
+        <div class="profile-setup">
+          <div class="avatar-upload-wrapper">
+            <div class="avatar-upload" title="Click to upload custom avatar">
+              <label for="avatar-input">
+                <div class="avatar-inner">
+                  <img id="avatar-preview" src="https://api.dicebear.com/7.x/bottts/svg?seed=SecureUser" alt="Avatar Preview">
+                  <div class="upload-overlay">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                      <circle cx="12" cy="13" r="4"/>
+                    </svg>
+                    <span>Change</span>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div class="avatar-badge-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </div>
+            <input type="file" id="avatar-input" accept="image/*" hidden>
+          </div>
+
+          <div class="input-field-group">
+            <input type="text" id="username" placeholder="Choose a display name" class="auth-input" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="room-actions">
+          <div class="input-field-group">
+            <input type="text" id="room-code" placeholder="Enter Room Code (e.g. SECURE1)" class="auth-input" style="text-transform: uppercase;" autocomplete="off">
+          </div>
+          <div class="button-group">
+            <button id="join-btn" class="btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                <polyline points="10 17 15 12 10 7"/>
+                <line x1="15" y1="12" x2="3" y2="12"/>
+              </svg>
+              Join Room
+            </button>
+            <div class="separator-divider"><span>or</span></div>
+            <button id="create-btn" class="btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="16"/>
+                <line x1="8" y1="12" x2="16" y2="12"/>
+              </svg>
+              Create New Room
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       CHAT ROOM VIEW
+       ====================================================================== -->
+  <div class="chat-container hidden">
+    <!-- Header -->
+    <header class="chat-header">
+      <div class="room-info-group">
+        <div class="brand-mini">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="url(#gradient-id)" stroke-width="2.5">
+            <defs>
+              <linearGradient id="gradient-id" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6366f1" />
+                <stop offset="100%" stop-color="#ec4899" />
+              </linearGradient>
+            </defs>
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span>SecureJoin</span>
+        </div>
+
+        <div class="room-badge-pill">
+          <span class="room-label">Room</span>
+          <span id="current-room">------</span>
+          <button id="copy-room-btn" class="copy-btn" title="Copy Room Code">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="user-status-pill">
+          <span class="status-dot"></span>
+          <span id="user-count">1 online</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="leave-btn" class="btn-warning" title="Leave room">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          <span>Leave</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Chat Body -->
+    <div class="chat-main">
+      <!-- Stream -->
+      <main id="messages-container"></main>
+
+      <!-- Active Users Sidebar -->
+      <aside class="user-list" id="user-sidebar">
+        <div class="sidebar-header">
+          <h3>Members in Room</h3>
+          <span class="user-badge-count" id="active-badge-count">1</span>
+        </div>
+        <div id="users-list"></div>
+      </aside>
+    </div>
+
+    <!-- Quick Emoji Drawer -->
+    <div id="emoji-drawer" class="emoji-drawer hidden">
+      <button type="button" class="emoji-item-btn">👍</button>
+      <button type="button" class="emoji-item-btn">❤️</button>
+      <button type="button" class="emoji-item-btn">🔥</button>
+      <button type="button" class="emoji-item-btn">🎉</button>
+      <button type="button" class="emoji-item-btn">😂</button>
+      <button type="button" class="emoji-item-btn">✨</button>
+      <button type="button" class="emoji-item-btn">🚀</button>
+      <button type="button" class="emoji-item-btn">🔒</button>
+      <button type="button" class="emoji-item-btn">👏</button>
+      <button type="button" class="emoji-item-btn">🤝</button>
+      <button type="button" class="emoji-item-btn">💯</button>
+      <button type="button" class="emoji-item-btn">👋</button>
+    </div>
+
+    <!-- Controls / Input Dock -->
+    <footer class="chat-controls">
+      <div class="input-group">
+        <button id="emoji-btn" class="icon-btn" type="button" title="Insert Emoji">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+        </button>
+
+        <button id="file-btn" class="icon-btn" type="button" title="Attach file or image">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+          </svg>
+        </button>
+
+        <input type="text" id="message-input" placeholder="Type a message..." autocomplete="off">
+
+        <div class="input-actions">
+          <button id="send-btn" class="btn-primary" type="button">
+            <span>Send</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <input type="file" id="file-input" hidden accept="*">
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

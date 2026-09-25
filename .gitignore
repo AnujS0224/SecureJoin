@@ -1,0 +1,33 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# OS and Editor Files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Environment files
+.env
+
+# Build artifacts
+dist/
+build/
+
+# Optional: npm cache directory
+.npm/
+
+# Local Documentation & Prompts
+*.pdf
+SecureJoin_ChatGPT_Prompt.md
+project_documentation.html
